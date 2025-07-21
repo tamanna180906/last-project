@@ -10,11 +10,11 @@ function Navber() {
         <div className='py-5 bg-[#FFFFFF]'>
             <Container>
                 <div className='lg:flex items-center'>
-                    <div className='w-2/12 relative'>
+                    <div className='w-4/12 relative'>
                         <img src={nav}></img>
                     </div>
-                    <div className='lg:w-10/12'>
-                        <ul className={`lg:flex pt-5 lg:pt-0 justify-center text-center lg:bg-transparent gap-[40px] duration-300 ease-in-out ${show==true?" mt-0 opacity-0":
+                    <div className='lg:w-8/12'>
+                        <ul className={`lg:flex pt-5 lg:pt-0 text-center lg:bg-transparent gap-[40px] duration-300 ease-in-out ${show==true?" mt-0 opacity-0":
                             " bg-[#D8D8D8] h-[200px] lg:h-3 opacity-100"}`}>
                             <li className='font-[14px] text-[#767676] font-dm hover:text-[#262626]'>Home</li>
                             <li className='font-[14px] text-[#767676] font-dm hover:text-[#262626]'>Shop</li>
