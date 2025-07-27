@@ -46,7 +46,7 @@ function Header() {
                             <h2>Shop by Category</h2>
                         </div>
                         {show &&
-                            <div className='bg-[#262626] py-3 mt-3 absolute top-[38px] left-0 w-full'>
+                            <div className='bg-[#262626] py-3 mt-3 absolute top-[38px] left-0 w-full z-100'>
                                 <ul className='14px'>
                                     <li className='text-[#FFFFFFB2] duration-300 ease-in-out p-2 hover:pl-4 hover:text-[#FFFFFF]'>
                                         <div className='flex justify-between items-center'>
@@ -88,7 +88,7 @@ function Header() {
                             </div>
                         }
                     </div>
-                    <div className='w-6/12'>
+                    <div className='w-7/12'>
                         <div className='relative'>
                             <input type='text' placeholder='Search Products' className='w-full py-2 pl-4 rounded-full bg-[#FFFFFF] 
                         outline-0'></input>
@@ -98,7 +98,7 @@ function Header() {
                         </div>
                     </div>
                     <div className='w-3/12 relative'>
-                        <div className='flex gap-8 items-center justify-start'>
+                        <div className='flex gap-8 items-center justify-center'>
                             <div ref={accRef} className='flex items-center'>
                                 <FaUser />
                                 <FaCaretDown />
@@ -108,17 +108,17 @@ function Header() {
                             </div>
                         </div>
                         {accshow &&
-                            <div className='bg-[#FFFFFF] py-3 mt-3 absolute top-[38px] left-0 w-full'>
+                            <div className='bg-[#FFFFFF] mt-3 absolute top-[38px] left-0 w-full z-100'>
                                 <ul>
-                                    <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-2 text-center font-dm
+                                    <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-3 text-center font-dm
                                  font-[14px] duration-300 ease-in-out'>My Account</li>
-                                    <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-2 text-center font-dm 
+                                    <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-3 text-center font-dm 
                                 font-[14px] duration-300 ease-in-out'>Log Out</li>
                                 </ul>
                             </div>
                         }
                         {colshow &&
-                            <div className='w-full absolute top-[38px] left-0'>
+                            <div className='w-full absolute top-[38px] left-0 z-100'>
                                 <div className='flex p-[10px] justify-between bg-[#F5F5F3] items-center'>
                                     <div className='h-[50px] w-[50px] bg-[#979797]'></div>
                                     <div className='font-dm font-bold text-[14px]'>

@@ -4,3 +4,9 @@
 @theme{
   --font-dm:"DM Sans", sans-serif;
 }
+
+.slick-dots .slick-active div{
+  border-right:2px solid black !important;
+  color: black  !important;
+}
+
