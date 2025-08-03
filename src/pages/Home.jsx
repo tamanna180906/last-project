@@ -11,14 +11,11 @@ import Footer from '../components/Footer'
 function Home() {
   return (
     <>
-    <Navber/>
-    <Header/>
     <Banner/>
     <Icone/>
     <Sale/>
     <Arrivals/>
     <Offers/>
-    <Footer/>
     </>
   )
 }

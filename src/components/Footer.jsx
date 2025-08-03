@@ -8,8 +8,8 @@ function Footer() {
     return (
         <div className='bg-[#F5F5F3] py-[60px]'>
             <Container>
-                <div className='flex justify-between'>
-                    <div className='w-4/12 flex justify-between'>
+                <div className='lg:flex justify-between'>
+                    <div className='lg:w-4/12 flex justify-between'>
                         <div className=''>
                             <ul>
                                 <li className='font-dm font-bold text-[16px]'>MENU</li>
@@ -42,21 +42,21 @@ function Footer() {
                         </div>
                     </div>
                     <div className='w-2/12'>
-                    <h2 className='font-dm text-[16px] font-bold'>(052) 611-5711</h2>
-                    <h2 className='font-dm text-[16px] font-bold'>company@domain.com</h2>
+                        <h2 className='font-dm text-[16px] font-bold'>(052) 611-5711</h2>
+                        <h2 className='font-dm text-[16px] font-bold'>company@domain.com</h2>
                     </div>
                     <div className='w-3/12'>
-                    <img src={nav}></img>
+                        <img src={nav}></img>
                     </div>
                 </div>
                 <div className='flex justify-between pt-[50px]'>
                     <div className='w-1/12 flex justify-between'>
-                    <FaFacebookF/>
-                    <FaLinkedinIn/>
-                    <CiInstagram/>
+                        <FaFacebookF />
+                        <FaLinkedinIn />
+                        <CiInstagram />
                     </div>
                     <div className='w-3/12'>
-                    <h2 className='text-[#6D6D6D] text-[11px] font-dm'>2020 Orebi Minimal eCommerce Figma Template by Adveits</h2>
+                        <h2 className='text-[#6D6D6D] text-[11px] font-dm'>2020 Orebi Minimal eCommerce Figma Template by Adveits</h2>
                     </div>
                 </div>
             </Container>

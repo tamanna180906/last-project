@@ -15,7 +15,7 @@ function Banner() {
 
 
         appendDots: dots => (
-            <div
+            <div 
                 style={{
                     borderRadius: "10px",
                     padding: "10px",
@@ -29,7 +29,7 @@ function Banner() {
             </div>
         ),
         customPaging: i => (
-            <div
+            <div className='lg:block hidden'
                 style={{
                     width: "30px",
                     color: 'transparent',

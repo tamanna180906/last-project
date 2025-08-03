@@ -6,7 +6,7 @@ import sale3 from "../assets/sale3.png"
 
 function Sale() {
   return (
-    <div className='py-[100px]'>
+    <div className='lg:py-[100px] py-4'>
         <Container>
             <div className='flex justify-between gap-5'>
                 <div className='w-6/12'>
@@ -16,7 +16,7 @@ function Sale() {
                 <div className=''>
                     <img className='w-full' src={sale2}></img>
                 </div>
-                <div className="pt-8">
+                <div className="lg:pt-8 pt-4">
                     <img className='w-full' src={sale3}></img>
                 </div>
                 </div>
