@@ -18,7 +18,7 @@ function ContextApi({children}) {
 
     useEffect(()=>{
         getData();
-    })
+    },[])
 
   return (
     <ApiData.Provider value={{loading,info}}>{children}</ApiData.Provider>

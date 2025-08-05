@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import Container from './Container'
 import { MdChevronLeft } from 'react-icons/md'
 import { HiOutlineRefresh, HiPlusSm } from 'react-icons/hi'
 import { FaCaretDown, FaCaretUp, FaHeart } from 'react-icons/fa6'
 import { AiOutlineBars } from 'react-icons/ai'
 import { TbGridDots } from 'react-icons/tb'
-import pro1 from "../assets/pro1.png"
-import pro2 from "../assets/pro2.png"
-import off3 from "../assets/off3.png"
-import off2 from "../assets/off2.png"
-import off1 from "../assets/off1.png"
-import off4 from "../assets/off4.png"
-import pro5 from "../assets/pro5.png"
-import arr8 from "../assets/arr8.png"
-import arr1 from "../assets/arr1.png"
 import { FaShoppingCart } from 'react-icons/fa'
+import Post from './Post'
+import Pagination from './Pagination'
+import { ApiData } from './ContextApi'
 
 function Products() {
+  let {info}=useContext(ApiData)
+  let [perPage,setPerPage]=useState(6)
+  let [currentPage,setCurrentPage] =useState(1)
+  let lastPage =perPage*currentPage
+  let fristPage=lastPage-perPage
+  let allPage=info.slice(fristPage,lastPage)
+
+
+  let pageNumbbr=[];
+
+  for (let i=1;i<= Math.ceil(info.length/perPage);i++){
+    pageNumbbr.push(i)
+  }
+
+
   return (
     <div className='py-[100px]'>
       <Container>
@@ -173,334 +182,10 @@ function Products() {
                 </div>
               </div>
             </div>
-            <div className='py-[50px] flex flex-wrap justify-between'>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={pro1} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%] relative'>
-                <div className=' relative group'>
-                  <img src={off3} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={off2} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={off1} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={pro5} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={arr8} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={off4} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={off2} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={off1} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={pro2} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={arr1} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
-              <div className='lg:w-[32%]  relative'>
-                <div className=' relative group'>
-                  <img src={off4} className='w-full' />
-                  <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
-                                 duration-300 ease-in-out'>
-                    <div className='flex justify-end gap-3 items-center'>
-                      <p className='text-[#767676] text-[16px] font-dm'>Add to Wish List</p>
-                      <FaHeart />
-                    </div>
-                    <div className='flex justify-end pt-3'>
-                      <HiOutlineRefresh />
-                    </div>
-                    <div className='flex justify-end items-center gap-3 pt-3'>
-                      <p className='font-bold text-[16px] font-dm'>Add to Cart</p>
-                      <FaShoppingCart />
-                    </div>
-                  </div>
-                </div>
-                <h1 className='top-[20px] left-[20px] absolute py-[7px] px-[20px] bg-[#262626] text-[#FFFFFF] font-dm '>10%</h1>
-                <div className='flex justify-between items-center pt-4'>
-                  <h2 className='text-[18px] font-dm font-medium'>Basic Crew Neck Tee</h2>
-                  <p className='text-[14px] text-[#767676] font-dm'>$44.00</p>
-                </div>
-                <p className='text-[14px] text-[#767676] font-dm pt-3'>Black</p>
-              </div>
+            <div className="pt-10 flex flex-wrap justify-between">
+              <Post allPage={allPage}/>
             </div>
-            <div className='w-[30%] pt-[50px] flex justify-between'>
-              <div className='w-[35px] h-[35px] bg-[#FFFFFF] text-[#262626] font-dm relative text-[14px] border-2
-               border-[#F0F0F0] hover:bg-[#262626] hover:text-[#FFFFFF] '>
-                <h2 className='absolute top-[7px] left-[11px]'>1</h2>
-              </div>
-              <div className='w-[35px] h-[35px] bg-[#FFFFFF] text-[#262626] font-dm relative text-[14px] border-2
-               border-[#F0F0F0] hover:bg-[#262626] hover:text-[#FFFFFF] '>
-                <h2 className='absolute top-[7px] left-[11px]'>2</h2>
-              </div>
-              <div className='w-[35px] h-[35px] bg-[#FFFFFF] text-[#262626] font-dm relative text-[14px] border-2
-               border-[#F0F0F0] hover:bg-[#262626] hover:text-[#FFFFFF] '>
-                <h2 className='absolute top-[7px] left-[11px]'>3</h2>
-              </div>
-              <div className='w-[35px] h-[35px] bg-[#FFFFFF] text-[#262626] font-dm relative text-[14px] border-2
-               border-[#F0F0F0] hover:bg-[#262626] hover:text-[#FFFFFF] '>
-                <h2 className='absolute top-[7px] left-[11px]'>4</h2>
-              </div>
-              <div className='w-[35px] h-[35px] bg-[#FFFFFF] text-[#262626] font-dm relative text-[14px] border-2
-               border-[#F0F0F0] hover:bg-[#262626] hover:text-[#FFFFFF] '>
-                <h2 className='absolute top-[7px] left-[11px]'>...</h2>
-              </div>
-              <div className='w-[35px] h-[35px] bg-[#FFFFFF] text-[#262626] font-dm relative text-[14px] border-2
-               border-[#F0F0F0] hover:bg-[#262626] hover:text-[#FFFFFF] '>
-                <h2 className='absolute top-[7px] left-[11px]'>10</h2>
-              </div>
-            </div>
+            <Pagination pageNumbbr={pageNumbbr}/>
           </div>
         </div>
       </Container>
