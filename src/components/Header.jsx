@@ -14,7 +14,6 @@ function Header() {
     let [colshow, setColRef] = useState(false)
     useEffect(() => {
         document.addEventListener("click", (e) => {
-            console.log(cateRef.current.contains(e.target) == true);
             if (cateRef.current.contains(e.target) == true) {
                 setShow(!show)
             } else {
