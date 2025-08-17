@@ -5,7 +5,7 @@ import { FaBarsStaggered } from 'react-icons/fa6'
 import { RxCross1 } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
 
-function Navber() {
+function Navbar() {
     let [show,setShow]=useState(false)
     return (
         <div className='py-5 bg-[#FFFFFF]'>
@@ -38,4 +38,4 @@ function Navber() {
     )
 }
 
-export default Navber
+export default Navbar

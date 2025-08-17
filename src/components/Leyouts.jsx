@@ -1,13 +1,13 @@
 import React from 'react'
 import Header from './Header'
-import Navber from './Navber'
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
+import Navbar from './Navbar'
 
 function Leyouts() {
     return (
         <>
-            <Navber />
+            <Navbar/>
             <Header />
             <Outlet/>
             <Footer/>

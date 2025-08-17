@@ -22,7 +22,8 @@ function Products() {
   let [showTwo, setShowTwo] = useState(false)
   let [showThr, setShowThr] = useState(false)
   let [showFour, setShowFour] = useState(false)
-  let [category,setCategory] =useState([])
+  let [category, setCategory] = useState([])
+  let [filterCategory,setFilterCategory] =useState([])
 
 
   let pageNumbbr = [];
@@ -53,10 +54,18 @@ function Products() {
 
   }
 
-  // useEffect(()=>{
-  //   setCategory([...new Set(info.map((item)=>item.category))])
-  // },[info])
-  // console.log(category);
+  useEffect(() => {
+    setCategory([...new Set(info.map((item) => item.category))])
+  }, [info])
+  console.log(category);
+
+  
+  let handleCaregoty =(citem)=>{
+    let filteritem = info.filter((item)=>item.category==citem)
+    setFilterCategory(filteritem);
+    
+    
+  }
   
 
 
@@ -75,133 +84,115 @@ function Products() {
         <div className='flex justify-between pt-[100px]'>
           <div className='w-[23%]'>
             <div className=' flex justify-between items-center'>
-              <h2 on onClick={()=>setShow(!show)} className='text-[#262626] text-[20px] font-dm'>Shop by Category</h2>
-              {show ? <FaMinus/> : <HiPlusSm/> }
+              <h2 on onClick={() => setShow(!show)} className='text-[#262626] text-[20px] font-dm'>Shop by Category</h2>
+              {show ? <FaMinus /> : <HiPlusSm />}
             </div>
             <div className=''>
-              {show &&
               <ul className='pt-4'>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex justify-between items-center'>
-                    <h2 className='text-[#767676] text-[16px] font-dm'>Category 1</h2>
-                    <HiPlusSm />
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex justify-between items-center'>
-                    <h2 className='text-[#767676] text-[16px] font-dm'>Category 2</h2>
-                    <HiPlusSm />
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex justify-between items-center'>
-                    <h2 className='text-[#767676] text-[16px] font-dm'>Category 3</h2>
-                    <HiPlusSm />
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex justify-between items-center'>
-                    <h2 className='text-[#767676] text-[16px] font-dm'>Category 4</h2>
-                    <HiPlusSm />
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex justify-between items-center'>
-                    <h2 className='text-[#767676] text-[16px] font-dm'>Category 5</h2>
-                    <HiPlusSm />
-                  </div>
-                </li>
+                {show && (
+                  <>
+                    {category.map((item) => (
+                      <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                        <div className='flex justify-between items-center'>
+                          <h2 onClick={()=>handleCaregoty (item)} 
+                          className='text-[#767676] text-[16px] font-dm capitalize'>{item}</h2>
+                          <HiPlusSm />
+                        </div>
+                      </li>
+                    ))}
+                  </>
+                )
+                }
               </ul>
-              }
-              </div>
+            </div>
             <div className='pt-[50px] flex justify-between items-center'>
-              <h2 onClick={()=>setShowTwo(!showTwo)} className='text-[#262626] text-[20px] font-dm'>Shop by Color</h2>
-             {showTwo ? <FaMinus/> : <HiPlusSm/> }
+              <h2 onClick={() => setShowTwo(!showTwo)} className='text-[#262626] text-[20px] font-dm'>Shop by Color</h2>
+              {showTwo ? <FaMinus /> : <HiPlusSm />}
             </div>
             <div className=''>
               {showTwo &&
-              <ul className='pt-4'>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex items-center'>
-                    <div className='bg-[#000000] h-[10px] w-[10px] rounded-full '></div>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 1</h2>
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex items-center'>
-                    <div className='bg-[#FF8686] h-[10px] w-[10px] rounded-full '></div>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 2</h2>
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex items-center'>
-                    <div className='bg-[#7ED321] h-[10px] w-[10px] rounded-full '></div>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 3</h2>
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex items-center'>
-                    <div className='bg-[#B6B6B6] h-[10px] w-[10px] rounded-full '></div>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 4</h2>
-                  </div>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <div className='flex items-center'>
-                    <div className='bg-[#15CBA5] h-[10px] w-[10px] rounded-full '></div>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 5</h2>
-                  </div>
-                </li>
-              </ul>
+                <ul className='pt-4'>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <div className='flex items-center'>
+                      <div className='bg-[#000000] h-[10px] w-[10px] rounded-full '></div>
+                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 1</h2>
+                    </div>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <div className='flex items-center'>
+                      <div className='bg-[#FF8686] h-[10px] w-[10px] rounded-full '></div>
+                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 2</h2>
+                    </div>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <div className='flex items-center'>
+                      <div className='bg-[#7ED321] h-[10px] w-[10px] rounded-full '></div>
+                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 3</h2>
+                    </div>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <div className='flex items-center'>
+                      <div className='bg-[#B6B6B6] h-[10px] w-[10px] rounded-full '></div>
+                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 4</h2>
+                    </div>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <div className='flex items-center'>
+                      <div className='bg-[#15CBA5] h-[10px] w-[10px] rounded-full '></div>
+                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 5</h2>
+                    </div>
+                  </li>
+                </ul>
               }
             </div>
             <div className='pt-[50px] flex justify-between items-center'>
-              <h2 onClick={()=>setShowThr(!showThr)} className='text-[#262626] text-[20px] font-dm'>Shop by Brand</h2>
-              {showThr ? <FaMinus/> : <HiPlusSm/> }
+              <h2 onClick={() => setShowThr(!showThr)} className='text-[#262626] text-[20px] font-dm'>Shop by Brand</h2>
+              {showThr ? <FaMinus /> : <HiPlusSm />}
             </div>
             <div className=''>
               {showThr &&
-              <ul className='pt-4'>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 1</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 2</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 3</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 4</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 5</h2>
-                </li>
-              </ul>
+                <ul className='pt-4'>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 1</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 2</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 3</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 4</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 5</h2>
+                  </li>
+                </ul>
               }
             </div>
             <div className='pt-[50px] flex justify-between items-center'>
-              <h2 onClick={()=>setShowFour(!showFour)} className='text-[#262626] text-[20px] font-dm'>Shop by Price</h2>
-              {showFour ? <FaMinus/> : <HiPlusSm/> }
+              <h2 onClick={() => setShowFour(!showFour)} className='text-[#262626] text-[20px] font-dm'>Shop by Price</h2>
+              {showFour ? <FaMinus /> : <HiPlusSm />}
             </div>
             <div className=''>
-              {showFour&&
-              <ul className='pt-4'>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$0.00 - $9.99</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$10.00 - $19.99</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$20.00 - $29.99</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$30.00 - $39.99</h2>
-                </li>
-                <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                  <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$40.00 - $69.99</h2>
-                </li>
-              </ul>
+              {showFour &&
+                <ul className='pt-4'>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$0.00 - $9.99</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$10.00 - $19.99</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$20.00 - $29.99</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$30.00 - $39.99</h2>
+                  </li>
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$40.00 - $69.99</h2>
+                  </li>
+                </ul>
               }
             </div>
           </div>
@@ -231,7 +222,7 @@ function Products() {
               </div>
             </div>
             <div className="pt-10 flex flex-wrap justify-between">
-              <Post allPage={allPage} />
+              <Post allPage={allPage} filterCategory={filterCategory} />
             </div>
             <div className='mt-[50px]'>
               <Pagination pageNumbbr={pageNumbbr} paginate={paginate} next={next} prev={prev} currentPage={currentPage} />
