@@ -57,7 +57,6 @@ function Products() {
   useEffect(() => {
     setCategory([...new Set(info.map((item) => item.category))])
   }, [info])
-  console.log(category);
 
   
   let handleCaregoty =(citem)=>{

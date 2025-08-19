@@ -4,14 +4,13 @@ import { FaHeart } from 'react-icons/fa6'
 import { HiOutlineRefresh } from 'react-icons/hi'
 import { FaShoppingCart } from 'react-icons/fa'
 import { ApiData } from './ContextApi'
+import { Link } from 'react-router-dom'
 
 
 function Post({allPage,filterCategory}) {
 
     
     
-
-
     return (
         <>
         {filterCategory.length> 0 ?
@@ -45,7 +44,9 @@ function Post({allPage,filterCategory}) {
         :allPage.map((item)=>(
             <div className='lg:w-[32%]  relative'>
                 <div className=' relative group'>
-                    <img src={item.thumbnail} className='w-full' />
+                    <Link to={`/shop/${item.id}`}>
+                     <img src={item.thumbnail} className='w-full' />
+                    </Link>
                     <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
                                  duration-300 ease-in-out'>
                         <div className='flex justify-end gap-3 items-center'>
