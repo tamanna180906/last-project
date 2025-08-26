@@ -9,7 +9,8 @@ function ProductDetails() {
 
     let singleProduct = () => {
         axios.get(`https://dummyjson.com/products/${productId.id}`).then((response) => {
-            setCat(response.id);
+            console.log(response.id);
+            
         })
     }
 

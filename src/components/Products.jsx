@@ -5,11 +5,10 @@ import { HiOutlineRefresh, HiPlusSm } from 'react-icons/hi'
 import { FaCaretDown, FaCaretUp, FaHeart, FaMinus } from 'react-icons/fa6'
 import { AiOutlineBars } from 'react-icons/ai'
 import { TbGridDots } from 'react-icons/tb'
-import { FaShoppingCart } from 'react-icons/fa'
 import Post from './Post'
 import Pagination from './Pagination'
 import { ApiData } from './ContextApi'
-import { BsPlus } from 'react-icons/bs'
+
 
 function Products() {
   let { info } = useContext(ApiData)
@@ -23,7 +22,8 @@ function Products() {
   let [showThr, setShowThr] = useState(false)
   let [showFour, setShowFour] = useState(false)
   let [category, setCategory] = useState([])
-  let [filterCategory,setFilterCategory] =useState([])
+  let [filterCategory, setFilterCategory] = useState([])
+  let [active,setActive]=useState("")
 
 
   let pageNumbbr = [];
@@ -58,14 +58,25 @@ function Products() {
     setCategory([...new Set(info.map((item) => item.category))])
   }, [info])
 
-  
-  let handleCaregoty =(citem)=>{
-    let filteritem = info.filter((item)=>item.category==citem)
+
+  let handleCaregoty = (citem) => {
+    let filteritem = info.filter((item) => item.category == citem)
     setFilterCategory(filteritem);
-    
+
+
+  }
+  let handleActive=()=>{
+    setActive("active");
     
   }
+  console.log(active);
   
+
+  
+  // let handleAllProduct = () => {
+  //   setFilterCategory("");
+  // }
+
 
 
 
@@ -86,10 +97,15 @@ function Products() {
               <h2 on onClick={() => setShow(!show)} className='text-[#262626] text-[20px] font-dm'>Shop by Category</h2>
               {show ? <FaMinus /> : <HiPlusSm />}
             </div>
-            <div className=''>
-              <ul className='pt-4'>
+
                 {show && (
-                  <>
+                  <ul className='pt-4'>
+                       {/* <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                        <div className='flex justify-between items-center'>
+                          <h2 onClick={handleAllProduct} className='text-[#767676] text-[16px] font-dm capitalize'>All Product</h2>
+                          <HiPlusSm />
+                        </div>
+                      </li> */}
                     {category.map((item) => (
                       <li className='py-4 border-b-2 border-[#F0F0F0]'>
                         <div className='flex justify-between items-center'>
@@ -99,11 +115,10 @@ function Products() {
                         </div>
                       </li>
                     ))}
-                  </>
+                  </ul>
                 )
                 }
-              </ul>
-            </div>
+
             <div className='pt-[50px] flex justify-between items-center'>
               <h2 onClick={() => setShowTwo(!showTwo)} className='text-[#262626] text-[20px] font-dm'>Shop by Color</h2>
               {showTwo ? <FaMinus /> : <HiPlusSm />}
@@ -201,7 +216,7 @@ function Products() {
                 <div className='h-[35px] w-[35px] bg-[#262626] relative'>
                   <AiOutlineBars className='text-[#FFFFFF] absolute top-[10px] left-[10px]' />
                 </div>
-                <div className='h-[35px] w-[35px] bg-[#FFFFFF] border-2 border-[#F0F0F0] relative'>
+                <div onClick={handleActive} className='h-[35px] w-[35px] bg-[#FFFFFF] border-2 border-[#F0F0F0] relative'>
                   <TbGridDots className='text-[#262626] absolute top-[10px] left-[9px]' />
                 </div>
               </div>
@@ -220,8 +235,8 @@ function Products() {
                 </div>
               </div>
             </div>
-            <div className="pt-10 flex flex-wrap justify-between">
-              <Post allPage={allPage} filterCategory={filterCategory} />
+            <div className="pt-10">
+              <Post allPage={allPage} filterCategory={filterCategory} active={active} />
             </div>
             <div className='mt-[50px]'>
               <Pagination pageNumbbr={pageNumbbr} paginate={paginate} next={next} prev={prev} currentPage={currentPage} />
