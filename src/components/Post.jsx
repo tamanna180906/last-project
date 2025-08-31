@@ -7,9 +7,10 @@ import { ApiData } from './ContextApi'
 import { Link } from 'react-router-dom'
 
 
-function Post({ allPage, filterCategory,active }) {
+function Post({ allPage, filterCategory, active  }) {
     let [allFilter, setAllFilter] = useState([])
     let [showAll, setShowAll] = useState(true)
+    let { loading } = useContext(ApiData)
     console.log(active);
     
 
@@ -29,6 +30,13 @@ function Post({ allPage, filterCategory,active }) {
         setAllFilter(filterCate);
         setShowAll(true)
 
+    }
+      if (loading) {
+        return (
+            <>
+                <h2>Loading....</h2>
+            </>
+        )
     }
 
 

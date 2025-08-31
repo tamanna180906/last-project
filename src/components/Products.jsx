@@ -73,9 +73,9 @@ function Products() {
   
 
   
-  // let handleAllProduct = () => {
-  //   setFilterCategory("");
-  // }
+  let handleAllProduct = () => {
+    setFilterCategory([]);
+  }
 
 
 
@@ -100,12 +100,12 @@ function Products() {
 
                 {show && (
                   <ul className='pt-4'>
-                       {/* <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                       <li className='py-4 border-b-2 border-[#F0F0F0]'>
                         <div className='flex justify-between items-center'>
                           <h2 onClick={handleAllProduct} className='text-[#767676] text-[16px] font-dm capitalize'>All Product</h2>
                           <HiPlusSm />
                         </div>
-                      </li> */}
+                      </li>
                     {category.map((item) => (
                       <li className='py-4 border-b-2 border-[#F0F0F0]'>
                         <div className='flex justify-between items-center'>
