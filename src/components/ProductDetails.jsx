@@ -7,15 +7,19 @@ import { CiStar } from 'react-icons/ci'
 import { FaMinus } from 'react-icons/fa6'
 import { HiPlusSm } from 'react-icons/hi'
 import { ApiData } from './ContextApi'
+import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
+import { useContext } from 'react'
 
 function ProductDetails() {
     let [show, setShow] = useState(false)
     let [showTo, setShowTo] = useState(false)
+    let [singleProducts,setSingleProducts]=useState([])
     let productId = useParams()
+    let info=useContext(ApiData)
 
     let singleProduct = () => {
         axios.get(`https://dummyjson.com/products/${productId.id}`).then((response) => {
-            console.log(response.id);
+            setSingleProducts(response.data);
 
         })
     }
@@ -25,25 +29,37 @@ function ProductDetails() {
         singleProduct()
     }, [])
 
+
+       let clientRating = Array.from({length:5},(_,index)=>{
+      let number=index + 0.5
+      return(
+        singleProducts.rating > index+1 ?<IoMdStar/> 
+        : singleProducts.rating > number ? <IoMdStarHalf/>:
+        <IoMdStarOutline/>
+      )
+    })
+
+    console.log(clientRating);
+    
+    
+
     return (
         <>
         <div className='py-[100px]'>
             <Container>
-                <div className='flex justify-between w-[100%]'>
-                    <div className='w-[48%]'>
-                        <img src={dtl}></img>
-                    </div>
-                    <div className='w-[48%]'>
-                        <img src={dtl}></img>
-                    </div>
+                <div>
+                <div className='w-[30%] mx-auto'>
+                    <img src={singleProducts.thumbnail}></img>
+                    <h2 className='font-dm font-bold text-[16px] text-[#262626] text-center'>
+                        {singleProducts.title}
+                    </h2>
                 </div>
                 <div className='w-[13%] pt-[100px] flex justify-between items-center'>
-                    <div className='flex justify-between'>
-                        <p><CiStar /></p>
-                        <p><CiStar /></p>
-                        <p><CiStar /></p>
-                        <p><CiStar /></p>
-                        <p><CiStar /></p>
+                    <div className='flex justify-between text-amber-300'>
+                        {clientRating}
+                        {/* <IoMdStar/>
+                        <IoMdStarHalf/>
+                        <IoMdStarOutline/> */}
                     </div>
                     <div className='font-dm text-[14px] text-[#767676] '>1 Review</div>
                 </div>
@@ -152,6 +168,7 @@ function ProductDetails() {
                         <input placeholder='Your review here' className='border-b-2 border-[#F0F0F0] w-full pb-3 font-dm text-[14px]'></input>
                     </div>
                     <button className='mt-10 py-2 px-2 w-[200px] text-center font-dm text-[14px] text-[#FFFFFF] bg-[#262626]'>Post</button>
+                </div>
                 </div>
             </Container>
         </div>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Pagination({ pageNumbbr,paginate,next,prev,currentPage}) {
+function Pagination({ pageNumbbr,paginate,next,prev,currentPage,filterCategory}) {
 
   return (
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" className={`${filterCategory.length > 0 ?"hidden" : "py-2"}`}>
       <ul class="inline-flex -space-x-px text-base h-10">
         <li onClick={prev}>
           <a class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>

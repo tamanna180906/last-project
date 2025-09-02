@@ -20,6 +20,11 @@ function ContextApi({children}) {
         getData();
     },[])
 
+    
+
+
+
+
   return (
     <ApiData.Provider value={{loading,info}}>{children}</ApiData.Provider>
   )

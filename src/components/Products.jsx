@@ -213,11 +213,20 @@ function Products() {
           <div className='w-[74%]'>
             <div className='flex justify-between'>
               <div className='w-[10%] flex justify-between items-center'>
-                <div className='h-[35px] w-[35px] bg-[#262626] relative'>
-                  <AiOutlineBars className='text-[#FFFFFF] absolute top-[10px] left-[10px]' />
+                <div onClick={()=>setActive("")} className={`${
+                  active=="active"
+                  ?"h-[35px] w-[35px] border-2 border-[#F0F0F0] relative"
+                  :"h-[35px] w-[35px] text-[#F0F0F0] bg-[#262626] border-2 border-[#F0F0F0] relative"
+                }`}>
+                  < TbGridDots className='absolute top-[10px] left-[10px]' />
                 </div>
-                <div onClick={handleActive} className='h-[35px] w-[35px] bg-[#FFFFFF] border-2 border-[#F0F0F0] relative'>
-                  <TbGridDots className='text-[#262626] absolute top-[10px] left-[9px]' />
+                <div onClick={handleActive}
+                 className={`${
+                  active=="active"
+                  ?"h-[35px] w-[35px] bg-[#262626] text-[#F0F0F0] border-2 border-[#F0F0F0] relative"
+                  : "h-[35px] w-[35px] border-2 border-[#F0F0F0] relative"
+                  }`}>
+                  <AiOutlineBars className='absolute top-[10px] left-[9px]'/>
                 </div>
               </div>
               <div className='w-[55%] flex justify-between items-center'>
@@ -239,7 +248,8 @@ function Products() {
               <Post allPage={allPage} filterCategory={filterCategory} active={active} />
             </div>
             <div className='mt-[50px]'>
-              <Pagination pageNumbbr={pageNumbbr} paginate={paginate} next={next} prev={prev} currentPage={currentPage} />
+              <Pagination pageNumbbr={pageNumbbr} paginate={paginate} next={next} prev={prev} 
+              currentPage={currentPage} filterCategory={filterCategory} />
             </div>
           </div>
         </div>
