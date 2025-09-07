@@ -22,8 +22,11 @@ function Products() {
   let [showThr, setShowThr] = useState(false)
   let [showFour, setShowFour] = useState(false)
   let [category, setCategory] = useState([])
+  let [brand, setBrand] = useState([])
   let [filterCategory, setFilterCategory] = useState([])
-  let [active,setActive]=useState("")
+  let [active, setActive] = useState("")
+  let [low,setLow]=useState()
+  let [high,setHigh]=useState()
 
 
   let pageNumbbr = [];
@@ -56,26 +59,45 @@ function Products() {
 
   useEffect(() => {
     setCategory([...new Set(info.map((item) => item.category))])
+    setBrand([...new Set(info.map((item) => item.brand))])
   }, [info])
 
 
   let handleCaregoty = (citem) => {
     let filteritem = info.filter((item) => item.category == citem)
     setFilterCategory(filteritem);
-
-
   }
-  let handleActive=()=>{
+
+  let handleActive = () => {
     setActive("active");
-    
-  }
-  console.log(active);
-  
 
-  
+  }
+
+  console.log(active);
+
+
+
   let handleAllProduct = () => {
     setFilterCategory([]);
   }
+
+  let handleBrand=(bitem)=>{
+    let filterBrand=info.filter((item)=>item.brand==bitem)
+    setFilterCategory(filterBrand);
+    
+  }
+
+  let handlePrice=(value)=>{
+    setLow(value.low);
+    setHigh(value.high);
+    let priceFilter=info.filter((item)=>item.price>value.low && item.price<value.high)
+    setFilterCategory(priceFilter);
+    
+    
+  }
+  
+  
+
 
 
 
@@ -98,26 +120,26 @@ function Products() {
               {show ? <FaMinus /> : <HiPlusSm />}
             </div>
 
-                {show && (
-                  <ul className='pt-4'>
-                       <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                        <div className='flex justify-between items-center'>
-                          <h2 onClick={handleAllProduct} className='text-[#767676] text-[16px] font-dm capitalize'>All Product</h2>
-                          <HiPlusSm />
-                        </div>
-                      </li>
-                    {category.map((item) => (
-                      <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                        <div className='flex justify-between items-center'>
-                          <h2 onClick={()=>handleCaregoty (item)} 
-                          className='text-[#767676] text-[16px] font-dm capitalize'>{item}</h2>
-                          <HiPlusSm />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )
-                }
+            {show && (
+              <ul className='pt-4'>
+                <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                  <div className='flex justify-between items-center'>
+                    <h2 onClick={handleAllProduct} className='text-[#767676] text-[16px] font-dm capitalize'>All Product</h2>
+                    <HiPlusSm />
+                  </div>
+                </li>
+                {category.map((item) => (
+                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <div className='flex justify-between items-center'>
+                      <h2 onClick={() => handleCaregoty(item)}
+                        className='text-[#767676] text-[16px] font-dm capitalize'>{item}</h2>
+                      <HiPlusSm />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )
+            }
 
             <div className='pt-[50px] flex justify-between items-center'>
               <h2 onClick={() => setShowTwo(!showTwo)} className='text-[#262626] text-[20px] font-dm'>Shop by Color</h2>
@@ -166,21 +188,11 @@ function Products() {
             <div className=''>
               {showThr &&
                 <ul className='pt-4'>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 1</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 2</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 3</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 4</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Brand 5</h2>
-                  </li>
+                  {brand.map((item) => (
+                    <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                      <h2 onClick={()=>handleBrand(item)} className='text-[#767676] text-[16px] pl-[10px] font-dm'>{item}</h2>
+                    </li>
+                  ))}
                 </ul>
               }
             </div>
@@ -192,19 +204,7 @@ function Products() {
               {showFour &&
                 <ul className='pt-4'>
                   <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$0.00 - $9.99</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$10.00 - $19.99</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$20.00 - $29.99</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$30.00 - $39.99</h2>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>$40.00 - $69.99</h2>
+                    <h2 onClick={()=>handlePrice({low:0,high:10})} className='text-[#767676] text-[16px] pl-[10px] font-dm'>$0.00 - $9.99</h2>
                   </li>
                 </ul>
               }
@@ -213,20 +213,18 @@ function Products() {
           <div className='w-[74%]'>
             <div className='flex justify-between'>
               <div className='w-[10%] flex justify-between items-center'>
-                <div onClick={()=>setActive("")} className={`${
-                  active=="active"
-                  ?"h-[35px] w-[35px] border-2 border-[#F0F0F0] relative"
-                  :"h-[35px] w-[35px] text-[#F0F0F0] bg-[#262626] border-2 border-[#F0F0F0] relative"
-                }`}>
+                <div onClick={() => setActive("")} className={`${active == "active"
+                    ? "h-[35px] w-[35px] border-2 border-[#F0F0F0] relative"
+                    : "h-[35px] w-[35px] text-[#F0F0F0] bg-[#262626] border-2 border-[#F0F0F0] relative"
+                  }`}>
                   < TbGridDots className='absolute top-[10px] left-[10px]' />
                 </div>
                 <div onClick={handleActive}
-                 className={`${
-                  active=="active"
-                  ?"h-[35px] w-[35px] bg-[#262626] text-[#F0F0F0] border-2 border-[#F0F0F0] relative"
-                  : "h-[35px] w-[35px] border-2 border-[#F0F0F0] relative"
-                  }`}>
-                  <AiOutlineBars className='absolute top-[10px] left-[9px]'/>
+                  className={`${active == "active"
+                      ? "h-[35px] w-[35px] bg-[#262626] text-[#F0F0F0] border-2 border-[#F0F0F0] relative"
+                      : "h-[35px] w-[35px] border-2 border-[#F0F0F0] relative"
+                    }`}>
+                  <AiOutlineBars className='absolute top-[10px] left-[9px]' />
                 </div>
               </div>
               <div className='w-[55%] flex justify-between items-center'>
@@ -248,8 +246,8 @@ function Products() {
               <Post allPage={allPage} filterCategory={filterCategory} active={active} />
             </div>
             <div className='mt-[50px]'>
-              <Pagination pageNumbbr={pageNumbbr} paginate={paginate} next={next} prev={prev} 
-              currentPage={currentPage} filterCategory={filterCategory} />
+              <Pagination pageNumbbr={pageNumbbr} paginate={paginate} next={next} prev={prev}
+                currentPage={currentPage} filterCategory={filterCategory} />
             </div>
           </div>
         </div>

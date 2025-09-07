@@ -7,12 +7,12 @@ import { ApiData } from './ContextApi'
 import { Link } from 'react-router-dom'
 
 
-function Post({ allPage, filterCategory, active  }) {
+function Post({ allPage, filterCategory, active }) {
     let [allFilter, setAllFilter] = useState([])
     let [showAll, setShowAll] = useState(true)
     let { loading } = useContext(ApiData)
     console.log(active);
-    
+
 
     useEffect(() => {
         let filterCate = filterCategory.slice(0, 5);
@@ -31,7 +31,7 @@ function Post({ allPage, filterCategory, active  }) {
         setShowAll(true)
 
     }
-      if (loading) {
+    if (loading) {
         return (
             <>
                 <h2>Loading....</h2>
@@ -49,7 +49,7 @@ function Post({ allPage, filterCategory, active  }) {
                 <div>
                     <div className='flex flex-wrap justify-between'>
                         {allFilter.map((item) => (
-                            <div className='lg:w-[32%]  relative'>
+                            <div className='lg:w-[32%] relative'>
                                 <div className=' relative group'>
                                     <img src={item.thumbnail} className='w-full' />
                                     <div className='w-full right-0 bottom-0 p-[20px] absolute bg-[#FFFFFF] opacity-0 group-hover:opacity-100
@@ -76,14 +76,21 @@ function Post({ allPage, filterCategory, active  }) {
                             </div>
                         ))}
                     </div>
-                    {showAll ? filterCategory.length > 5 && <div onClick={handleShow}><h2>Show All</h2> </div> :
-                        <div onClick={handleLess}><h2>Less Show</h2></div>}
+                    {showAll ? filterCategory.length > 5 &&
+                        <div onClick={handleShow} className='text-center pt-10'>
+                            <button className='bg-[#262626] text-[#FFFFFF] py-3 px-10 rounded-2xl '>Show All</button>
+                        </div>
+                        :
+                        <div onClick={handleLess} className='text-center pt-10'>
+                            <button className='bg-[#262626] text-[#FFFFFF] py-3 px-10 rounded-2xl '>Less Show</button>
+                        </div>
+                    }
                 </div>
             ) : (
-                <div className={`${active=="active"? "w-full" :"flex flex-wrap justify-between"}`}>
+                <div className={`${active == "active" ? "w-full" : "flex flex-wrap justify-between"}`}>
                     {allPage.map((item) => (
-                        <div className='lg:w-[32%]  relative'>
-                            <div className=' relative group'>
+                        <div className='lg:w-[32%] relative'>
+                            <div className='relative group'>
                                 <Link to={`/shop/${item.id}`}>
                                     <img src={item.thumbnail} className='w-full' />
                                 </Link>
