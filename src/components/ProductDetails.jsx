@@ -9,6 +9,8 @@ import { HiPlusSm } from 'react-icons/hi'
 import { ApiData } from './ContextApi'
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
 import { useContext } from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from './slice/productSlice'
 
 function ProductDetails() {
     let [show, setShow] = useState(false)
@@ -16,6 +18,7 @@ function ProductDetails() {
     let [singleProducts, setSingleProducts] = useState([])
     let productId = useParams()
     let info = useContext(ApiData)
+    let dispatch = useDispatch()
 
     let singleProduct = () => {
         axios.get(`https://dummyjson.com/products/${productId.id}`).then((response) => {
@@ -44,6 +47,11 @@ function ProductDetails() {
     let mulPrice = singleProducts.price - mainPrice
 
     console.log(mulPrice.toFixed(2));
+
+    let handleCart = (item) => {
+
+        dispatch(addToCart({ ...item, qun: 1 }))
+    }
 
 
 
@@ -89,7 +97,8 @@ function ProductDetails() {
                         <div className='pt-[50px] w-[35%] flex justify-between'>
                             <p className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
                     hover:bg-[#262626] hover:text-[#FFFFFF] duration-300 ease-in-out'>Add to Wish List</p>
-                            <p className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
+                            <p onClick={() => handleCart(singleProducts)}
+                                className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
                     hover:bg-[#262626] hover:text-[#FFFFFF] duration-300 ease-in-out'>Add to Cart</p>
                         </div>
                         <div className='mt-10 w-[50%]'>
@@ -114,36 +123,10 @@ function ProductDetails() {
                                     </p>}
                             </div>
                         </div>
-
-                        <div className='pt-[50px] w-[50%]'>
-                        <div class="mb-4 border-gray-200 dark:border-gray-700">
-                            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
-                                <li class="me-2" role="presentation">
-                                    <button class="font-dm text-[18px] inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="settings-styled-tab" data-tabs-target="#styled-settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Description</button>
-                                </li>
-                                <li role="presentation">
-                                    <button class="font-dm text-[18px] inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contacts-styled-tab" data-tabs-target="#styled-contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Reviews</button>
-                                </li>
-                            </ul>
+                        <div className='pt-[100px] w-[20%] flex justify-between'>
+                            <p className='text-[20px] text-[#767676] font-dm'>Description</p>
+                            <h2 className='font-dm font-bold text-[20px] text-[#262626] '>Reviews (1) </h2>
                         </div>
-                        <div id="default-styled-tab-content">
-                            <div class="hidden p-4 rounded-lg bg-gray-50 " id="styled-settings" role="tabpanel" aria-labelledby="settings-tab">
-                                <p class="text-sm font-dm text-[14px] text-[#767676]">{singleProducts.description}</p>
-                            </div>
-                            <div class="hidden p-4 rounded-lg bg-gray-50" id="styled-contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                                <p class="text-sm font-dm text-[14px] text-[#767676]">
-                                    {singleProducts?.reviews?.map((item)=>(
-                                        <div>{item.comment}</div>
-                                    ))}
-                                </p>
-                            </div>
-                        </div>
-                        </div>
-
-                        {/* <div className='pt-[100px] w-[20%] flex justify-between'>
-                    <p className='text-[20px] text-[#767676] font-dm'>Description</p>
-                    <h2 className='font-dm font-bold text-[20px] text-[#262626] '>Reviews (1) </h2>
-                </div> */}
                         <div className='mt-10'>
                             <p className='text-[14px] text-[#767676] font-dm py-4'>1 review for Product</p>
                             <div className='border-y-2 border-[#F0F0F0] py-4'>

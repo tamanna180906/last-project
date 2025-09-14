@@ -140,47 +140,6 @@ function Products() {
               </ul>
             )
             }
-
-            <div className='pt-[50px] flex justify-between items-center'>
-              <h2 onClick={() => setShowTwo(!showTwo)} className='text-[#262626] text-[20px] font-dm'>Shop by Color</h2>
-              {showTwo ? <FaMinus /> : <HiPlusSm />}
-            </div>
-            <div className=''>
-              {showTwo &&
-                <ul className='pt-4'>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <div className='flex items-center'>
-                      <div className='bg-[#000000] h-[10px] w-[10px] rounded-full '></div>
-                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 1</h2>
-                    </div>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <div className='flex items-center'>
-                      <div className='bg-[#FF8686] h-[10px] w-[10px] rounded-full '></div>
-                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 2</h2>
-                    </div>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <div className='flex items-center'>
-                      <div className='bg-[#7ED321] h-[10px] w-[10px] rounded-full '></div>
-                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 3</h2>
-                    </div>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <div className='flex items-center'>
-                      <div className='bg-[#B6B6B6] h-[10px] w-[10px] rounded-full '></div>
-                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 4</h2>
-                    </div>
-                  </li>
-                  <li className='py-4 border-b-2 border-[#F0F0F0]'>
-                    <div className='flex items-center'>
-                      <div className='bg-[#15CBA5] h-[10px] w-[10px] rounded-full '></div>
-                      <h2 className='text-[#767676] text-[16px] pl-[10px] font-dm'>Color 5</h2>
-                    </div>
-                  </li>
-                </ul>
-              }
-            </div>
             <div className='pt-[50px] flex justify-between items-center'>
               <h2 onClick={() => setShowThr(!showThr)} className='text-[#262626] text-[20px] font-dm'>Shop by Brand</h2>
               {showThr ? <FaMinus /> : <HiPlusSm />}
@@ -189,7 +148,7 @@ function Products() {
               {showThr &&
                 <ul className='pt-4'>
                   {brand.map((item) => (
-                    <li className='py-4 border-b-2 border-[#F0F0F0]'>
+                    <li className='py-4 border-b-2 border-[#F0F0F0] last:border-b-0'>
                       <h2 onClick={()=>handleBrand(item)} className='text-[#767676] text-[16px] pl-[10px] font-dm'>{item}</h2>
                     </li>
                   ))}
