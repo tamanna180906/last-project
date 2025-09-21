@@ -1,29 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
+import Products from '../Products'
 
 const initialState = {
-  cartItem: [],
+  products:0,
 }
-
 export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    addToCart: (state,action) => {
-      let findProduct=state.cartItem.findIndex((item)=>item.id)
+    allproduct: (state,action) => {
+      state.products=action.payload
       
-
-      if(findProduct !== -1){
-        state.cartItem[findProduct].qun +=1;
-      }else{
-        state.cartItem =[{...action.payload,qun:1}]
-        
-      }
-    },
-
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart } = productSlice.actions
+export const { allproduct } = productSlice.actions
 
 export default productSlice.reducer

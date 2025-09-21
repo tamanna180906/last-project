@@ -25,7 +25,9 @@ function Navbar() {
                                 <Link to="/shop">Shop</Link>
                             </li>
                             <li className='font-[14px] text-[#767676] font-dm hover:text-[#262626]'>About</li>
-                            <li className='font-[14px] text-[#767676] font-dm hover:text-[#262626]'>Contacts</li>
+                            <li className='font-[14px] text-[#767676] font-dm hover:text-[#262626]'>
+                                <Link to="/contact">Contact</Link>
+                            </li>
                             <li className='font-[14px] text-[#767676] font-dm hover:text-[#262626]'>Journal</li>
                         </ul>
                     </div>

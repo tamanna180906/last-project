@@ -7,13 +7,15 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Shop from './pages/Shop'
 import Leyouts from './components/Leyouts'
 import ProductDetails from './components/ProductDetails'
+import Contact from './pages/Contact'
 
 
 let router = createBrowserRouter(createRoutesFromElements(
-  <Route element={<Leyouts/>}>
-    <Route index element={<Home/>}></Route>
-    <Route path='/shop' element={<Shop/>}></Route>
-    <Route path='/shop/:id' element={<ProductDetails/>}></Route>
+  <Route element={<Leyouts />}>
+    <Route index element={<Home />}></Route>
+    <Route path='/shop' element={<Shop />}></Route>
+    <Route path='/shop/:id' element={<ProductDetails />}></Route>
+    <Route path='/contact' element={<Contact />}></Route>
   </Route>
 ))
 
@@ -21,7 +23,7 @@ function App() {
 
   return (
     <>
-    <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </>
   )
 }

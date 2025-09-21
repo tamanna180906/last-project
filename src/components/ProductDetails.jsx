@@ -10,7 +10,6 @@ import { ApiData } from './ContextApi'
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
-import { addToCart } from './slice/productSlice'
 
 function ProductDetails() {
     let [show, setShow] = useState(false)
@@ -48,10 +47,10 @@ function ProductDetails() {
 
     console.log(mulPrice.toFixed(2));
 
-    let handleCart = (item) => {
+    // let handleCart = (item) => {
 
-        dispatch(addToCart({ ...item, qun: 1 }))
-    }
+    //     dispatch(addToCart({ ...item, qun: 1 }))
+    // }
 
 
 
