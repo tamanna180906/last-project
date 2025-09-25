@@ -10,6 +10,7 @@ import { ApiData } from './ContextApi'
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
 import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
+import { addToCart } from './slice/productSlice'
 
 function ProductDetails() {
     let [show, setShow] = useState(false)
@@ -45,13 +46,16 @@ function ProductDetails() {
 
     let mulPrice = singleProducts.price - mainPrice
 
-    console.log(mulPrice.toFixed(2));
 
     // let handleCart = (item) => {
 
     //     dispatch(addToCart({ ...item, qun: 1 }))
     // }
 
+    let handleAddtoCart=(item)=>{
+        dispatch(addToCart({...item,qun:1}))
+        
+    }
 
 
     return (
@@ -96,7 +100,7 @@ function ProductDetails() {
                         <div className='pt-[50px] w-[35%] flex justify-between'>
                             <p className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
                     hover:bg-[#262626] hover:text-[#FFFFFF] duration-300 ease-in-out'>Add to Wish List</p>
-                            <p onClick={() => handleCart(singleProducts)}
+                            <p onClick={()=>handleAddtoCart(singleProducts)}
                                 className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
                     hover:bg-[#262626] hover:text-[#FFFFFF] duration-300 ease-in-out'>Add to Cart</p>
                         </div>
