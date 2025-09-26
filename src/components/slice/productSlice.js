@@ -16,8 +16,7 @@ export const productSlice = createSlice({
       }else{
         // product nai
         state.cartItem=[...state.cartItem, action.payload]
-      }
-      
+      }     
     }
   },
 })

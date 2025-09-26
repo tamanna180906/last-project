@@ -4,6 +4,7 @@ import { FaBarsProgress, FaCaretDown, FaUser } from 'react-icons/fa6'
 import { TiChevronRight } from 'react-icons/ti'
 import { FaSearch, FaShoppingCart } from 'react-icons/fa'
 import { RxCross2 } from 'react-icons/rx'
+import { useSelector } from 'react-redux'
 
 function Header() {
     let cateRef = useRef()
@@ -12,6 +13,13 @@ function Header() {
     let [show, setShow] = useState(false)
     let [accshow, setAccShow] = useState(false)
     let [colshow, setColRef] = useState(false)
+
+    let cartdata=useSelector((state)=>state.product.cartItem)
+    console.log(cartdata);
+    
+
+
+
     useEffect(() => {
         document.addEventListener("click", (e) => {
             if (cateRef.current.contains(e.target) == true) {
@@ -103,6 +111,7 @@ function Header() {
                                 <FaCaretDown />
                             </div>
                             <div ref={colRef} className=''>
+                                {cartdata.length}
                                 <FaShoppingCart />
                             </div>
                         </div>
@@ -116,7 +125,7 @@ function Header() {
                                 </ul>
                             </div>
                         }
-                        {colshow &&
+                        {/* {colshow &&
                             <div className='w-[300px] mt-3 absolute lg:top-[38px] right-3 z-100'>
                                 <div className='flex p-[10px] justify-between bg-[#F5F5F3] items-center'>
                                     <div className='h-[50px] w-[50px] bg-[#979797]'></div>
@@ -141,7 +150,7 @@ function Header() {
                                     </div>
                                 </div>
                             </div>
-                        }
+                        } */}
                     </div>
                 </div>
             </Container>
