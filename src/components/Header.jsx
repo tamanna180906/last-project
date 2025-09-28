@@ -5,6 +5,7 @@ import { TiChevronRight } from 'react-icons/ti'
 import { FaSearch, FaShoppingCart } from 'react-icons/fa'
 import { RxCross2 } from 'react-icons/rx'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Header() {
     let cateRef = useRef()
@@ -110,10 +111,12 @@ function Header() {
                                 <FaUser />
                                 <FaCaretDown />
                             </div>
+                            <Link to="/cart">
                             <div ref={colRef} className=''>
                                 {cartdata.length}
                                 <FaShoppingCart />
                             </div>
+                            </Link>
                         </div>
                         {accshow &&
                             <div className='bg-[#FFFFFF] lg:mt-3 absolute top-[38px] left-0 w-full z-100'>

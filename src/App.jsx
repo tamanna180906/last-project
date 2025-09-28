@@ -8,6 +8,7 @@ import Shop from './pages/Shop'
 import Leyouts from './components/Leyouts'
 import ProductDetails from './components/ProductDetails'
 import Contact from './pages/Contact'
+import Cart from './pages/Cart'
 
 
 let router = createBrowserRouter(createRoutesFromElements(
@@ -16,6 +17,7 @@ let router = createBrowserRouter(createRoutesFromElements(
     <Route path='/shop' element={<Shop />}></Route>
     <Route path='/shop/:id' element={<ProductDetails />}></Route>
     <Route path='/contact' element={<Contact />}></Route>
+    <Route path='/cart' element={<Cart />}></Route>
   </Route>
 ))
 

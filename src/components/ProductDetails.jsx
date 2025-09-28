@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Container from './Container'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import dtl from "../assets/dtl.png"
 import { CiStar } from 'react-icons/ci'
@@ -52,9 +52,9 @@ function ProductDetails() {
     //     dispatch(addToCart({ ...item, qun: 1 }))
     // }
 
-    let handleAddtoCart=(item)=>{
-        dispatch(addToCart({...item,qun:1}))
-        
+    let handleAddtoCart = (item) => {
+        dispatch(addToCart({ ...item, qun: 1 }))
+
     }
 
 
@@ -100,8 +100,8 @@ function ProductDetails() {
                         <div className='pt-[50px] w-[35%] flex justify-between'>
                             <p className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
                     hover:bg-[#262626] hover:text-[#FFFFFF] duration-300 ease-in-out'>Add to Wish List</p>
-                            <p onClick={()=>handleAddtoCart(singleProducts)}
-                                className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
+                                <p onClick={() => handleAddtoCart(singleProducts)}
+                                    className='border-1 border-[#262626] py-4 px-2 w-[200px] text-center bg-[#FFFF] text-black font-dm
                     hover:bg-[#262626] hover:text-[#FFFFFF] duration-300 ease-in-out'>Add to Cart</p>
                         </div>
                         <div className='mt-10 w-[50%]'>
