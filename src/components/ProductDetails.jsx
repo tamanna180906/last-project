@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from './slice/productSlice'
 
 function ProductDetails() {
+    window.scrollTo(0, 0)
     let [show, setShow] = useState(false)
     let [showTo, setShowTo] = useState(false)
     let [singleProducts, setSingleProducts] = useState([])

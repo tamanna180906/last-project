@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 
 function Post({ allPage, filterCategory, active }) {
+    window.scrollTo(0, 0)
     let [allFilter, setAllFilter] = useState([])
     let [showAll, setShowAll] = useState(true)
     let { loading } = useContext(ApiData)
