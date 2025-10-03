@@ -18,10 +18,9 @@ function Header() {
     let [colshow, setColRef] = useState(false)
     let [filterProduct, setFilterProduct] = useState([])
     let [searchModel, setSearchModel] = useState(false)
-    let navigate=useNavigate()
+    let navigate = useNavigate()
 
     let cartdata = useSelector((state) => state.product.cartItem)
-    console.log(cartdata);
 
 
 
@@ -66,10 +65,10 @@ function Header() {
     let { info } = useContext(ApiData)
 
 
-    let handleMove=(id)=>{
+    let handleMove = (id) => {
         navigate(`/shop/${id}`);
         window.location.reload()
-        
+
     }
 
 
@@ -128,8 +127,8 @@ function Header() {
                             </div>
                         }
                     </div>
-                    <div className='w-6/12'>
-                        <div className='relative'>
+                    <div className='w-6/12 relative'>
+                        <div className=''>
                             <input onChange={handleSearch} type='text' placeholder='Search Products'
                                 className='w-full py-2 pl-4 rounded-full bg-[#FFFFFF] outline-0'></input>
                             <div className="top-[50%] translate-y-[-50%] right-4 absolute">
@@ -137,9 +136,10 @@ function Header() {
                             </div>
                         </div>
                         {searchModel &&
-                            <div className='w-full h-[330px] border border-b-gray-500 overflow-y-scroll'>
+                            <div className='w-full h-[330px] border border-b-gray-500 overflow-y-scroll
+                            top-[40px] left-0 absolute z-100'>
                                 {filterProduct.map((item) => (
-                                    <button className='w-full' onClick={()=>handleMove(item.id)}>
+                                    <button className='w-full' onClick={() => handleMove(item.id)}>
                                         <div className='flex flex-wrap items-center gap-5'>
                                             <img className='w-[100px]' src={item.thumbnail}></img>
                                             <div>
@@ -158,9 +158,13 @@ function Header() {
                                 <FaCaretDown />
                             </div>
                             <Link to="/cart">
-                                <div ref={colRef} className=''>
-                                    {cartdata.length}
-                                    <FaShoppingCart />
+                                <div ref={colRef} className=' relative'>
+                                    <div className='top-[-15px] right-[-20px] absolute'>
+                                        <div className='bg-[#D8D8D8] h-[25px] w-[25px] rounded-full text-center text-[16px] font-bold z-0'>
+                                            {cartdata.length}
+                                        </div>
+                                    </div>
+                                    <FaShoppingCart className=' relative z-100'/>
                                 </div>
                             </Link>
                         </div>
