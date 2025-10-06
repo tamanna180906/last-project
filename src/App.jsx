@@ -9,12 +9,16 @@ import Leyouts from './components/Leyouts'
 import ProductDetails from './components/ProductDetails'
 import Contact from './pages/Contact'
 import Cart from './pages/Cart'
+import About from './pages/About'
+import Journal from './pages/Journal'
 
 
 let router = createBrowserRouter(createRoutesFromElements(
   <Route element={<Leyouts />}>
     <Route index element={<Home />}></Route>
     <Route path='/shop' element={<Shop />}></Route>
+    <Route path='/about' element={<About />}></Route>
+    <Route path='/journal' element={<Journal />}></Route>
     <Route path='/shop/:id' element={<ProductDetails />}></Route>
     <Route path='/contact' element={<Contact />}></Route>
     <Route path='/cart' element={<Cart />}></Route>
