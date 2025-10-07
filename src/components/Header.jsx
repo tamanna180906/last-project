@@ -164,17 +164,21 @@ function Header() {
                                             {cartdata.length}
                                         </div>
                                     </div>
-                                    <FaShoppingCart className=' relative z-100'/>
+                                    <FaShoppingCart className=' relative z-100' />
                                 </div>
                             </Link>
                         </div>
                         {accshow &&
                             <div className='bg-[#FFFFFF] lg:mt-3 absolute top-[38px] left-0 w-full z-100'>
                                 <ul>
-                                    <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-3 text-center font-dm
-                                 font-[14px] duration-300 ease-in-out'>My Account</li>
+                                    <Link to="/login">
+                                        <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-3 text-center font-dm
+                                 font-[14px] duration-300 ease-in-out'>Login</li>
+                                    </Link>
+                                    <Link to="/signup">
                                     <li className='hover:bg-[#2B2B2B] hover:text-[#FFFFFF] py-3 text-center font-dm 
-                                font-[14px] duration-300 ease-in-out'>Log Out</li>
+                                font-[14px] duration-300 ease-in-out'>Sign up</li>
+                                </Link>
                                 </ul>
                             </div>
                         }
