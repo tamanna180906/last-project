@@ -164,7 +164,7 @@ function Header() {
                                             {cartdata.length}
                                         </div>
                                     </div>
-                                    <FaShoppingCart className=' relative z-100' />
+                                    <FaShoppingCart className=' relative z-100'/>
                                 </div>
                             </Link>
                         </div>

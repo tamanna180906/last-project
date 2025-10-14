@@ -13,6 +13,7 @@ import About from './pages/About'
 import Journal from './pages/Journal'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Checkout from './pages/Checkout'
 
 
 let router = createBrowserRouter(createRoutesFromElements(
@@ -25,6 +26,7 @@ let router = createBrowserRouter(createRoutesFromElements(
       <Route path='/shop/:id' element={<ProductDetails/>}></Route>
       <Route path='/contact' element={<Contact/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
+      <Route path='/checkout' element={<Checkout/>}></Route>
     </Route>
     <Route path='/login' element={<Login/>}></Route>
     <Route path='/signup' element={<Signup/>}></Route>
